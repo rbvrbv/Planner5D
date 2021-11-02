@@ -1,0 +1,17 @@
+<resources>
+
+    <string name="app_name">Planner5D</string>
+
+    <string name="projects_loading_error">Projects loading error</string>
+
+    <string name="preview_title">Projects</string>
+    <string name="preview_loading_error">Project preview loading error</string>
+    <string name="preview_not_found_error">Project preview not found</string>
+    <string name="preview_next_not_found">Next project preview not found</string>
+
+    <string name="button_projects">Projects</string>
+    <string name="button_projects_land">&lt;</string>
+    <string name="button_next">Next</string>
+    <string name="button_next_land">&gt;</string>
+
+</resources>

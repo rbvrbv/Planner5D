@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="su.rbv.planner5d.main.MainFragment"
+        android:label="fragment_main"
+        tools:layout="@layout/fragment_main" >
+
+        <action
+            android:id="@+id/action_preview"
+            app:destination="@id/previewFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/previewFragment"
+        android:name="su.rbv.planner5d.preview.PreviewFragment"
+        android:label="fragment_preview"
+        tools:layout="@layout/fragment_preview">
+
+        <argument
+            android:name="hash"
+            app:argType="string"/>
+
+        <action
+            android:id="@+id/action_preview_next"
+            app:destination="@id/previewFragment"
+            app:popUpTo="@+id/previewFragment"
+            app:popUpToInclusive="true" />
+
+    </fragment>
+
+</navigation>

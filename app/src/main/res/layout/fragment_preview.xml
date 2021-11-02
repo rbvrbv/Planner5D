@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="vm"
+            type="su.rbv.planner5d.preview.PreviewFragmentViewModel"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp10">
+
+        <su.rbv.planner5d.ui_kit.ProjectPreviewView
+            android:id="@+id/preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/preview_icon"
+            app:layout_constraintBottom_toTopOf="@id/preview_button_projects"
+            android:layout_marginTop="@dimen/dp10"
+            app:wallsColor="@color/brown"
+            app:roomsFillColor="@color/light_gray"
+            app:roomsBorderColor="@color/middle_gray"
+            app:visible="@{ vm.isLoaded }"/>
+
+        <ImageView
+            android:id="@+id/preview_icon"
+            android:layout_width="@dimen/dp24"
+            android:layout_height="@dimen/dp24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_project"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/preview_icon"
+            app:layout_constraintTop_toTopOf="@id/preview_icon"
+            app:layout_constraintBottom_toBottomOf="@id/preview_icon"
+            style="@style/TextProjectPreview"
+            android:layout_marginStart="@dimen/dp10"
+            android:text="@{ vm.projectData.name }"/>
+
+        <Button
+            android:id="@+id/preview_button_projects"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:onClick="@{ () -> vm.onProjectsClick() }"
+            android:text="@string/button_projects" />
+
+        <Button
+            android:id="@+id/preview_button_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:visible="@{ vm.isNextVisible }"
+            android:onClick="@{ () -> vm.onNextClick(vm.projectData.nextItemHash) }"
+            android:text="@string/button_next" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:visible="@{ vm.isLoading }"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

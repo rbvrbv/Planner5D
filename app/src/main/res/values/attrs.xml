@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="ProjectPreviewView">
+        <attr name="wallsColor" format="color"/>
+        <attr name="roomsFillColor" format="color"/>
+        <attr name="roomsBorderColor" format="color"/>
+    </declare-styleable>
+
+</resources>

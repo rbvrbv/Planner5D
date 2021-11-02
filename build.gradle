@@ -1,0 +1,66 @@
+buildscript {
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:7.0.3"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.31"
+        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.3.5"
+    }
+}
+
+ext {
+    minSdkVersion = 23
+    targetSdkVersion = 31
+    compileSdkVersion = 31
+    buildToolsVersion = '30.0.3'
+}
+
+subprojects {
+
+    if (name == 'app') {
+        apply plugin: 'com.android.application'
+    } else {
+        apply plugin: 'com.android.library'
+    }
+
+    apply plugin: 'kotlin-android'
+    apply plugin: 'kotlin-kapt'
+
+    android {
+
+        compileSdkVersion rootProject.ext.compileSdkVersion
+        buildToolsVersion rootProject.ext.buildToolsVersion
+
+        defaultConfig {
+            minSdkVersion rootProject.minSdkVersion
+            targetSdkVersion rootProject.targetSdkVersion
+        }
+
+        compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+
+        kotlinOptions {
+            jvmTarget = '1.8'
+        }
+
+        buildFeatures {
+            dataBinding true
+        }
+
+    }
+
+    dependencies {
+        implementation 'com.google.dagger:dagger:2.34'
+        kapt "com.google.dagger:dagger-compiler:2.34"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
